@@ -43,5 +43,6 @@
     </table>
 </div>
 <a href="addLesson"><h2>ADD LESSON</h2></a>
+<a href="home"><h3>BACK</h3></a>
 </body>
 </html>

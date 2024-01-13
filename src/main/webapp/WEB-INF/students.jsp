@@ -49,5 +49,6 @@
     </table>
 </div>
 <a href="addStudents"><h2>Add Students</h2></a>
+<a href="home"><h3>BACK</h3></a>
 </body>
 </html>
