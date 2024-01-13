@@ -15,9 +15,17 @@
 <%List<Lesson> lessons = (List<Lesson>) request.getAttribute("lessons");%>
 <form method="post" action="addStudents">
     NAME: <input type="text" name="name">
+    <br>
+    <br>
     SURNAME: <input type="text" name="surname">
+    <br>
+    <br>
     EMAIL: <input type="email" name="email">
+    <br>
+    <br>
     AGE: <input type="number" name="age" min="16" max="60">
+    <br>
+    <br>
 
     <select name="lessonId">
         <%for (Lesson lesson : lessons) {%>
@@ -25,6 +33,8 @@
         </option>
         <% }%>
     </select>
+    <br>
+    <br>
     <input type="submit" value="ADD">
 </form>
 </body>
