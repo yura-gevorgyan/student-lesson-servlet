@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
         User user = userManager.getByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
+            req.getSession().invalidate();
             req.getSession().setAttribute("user", user);
             resp.sendRedirect("/home");
         } else {

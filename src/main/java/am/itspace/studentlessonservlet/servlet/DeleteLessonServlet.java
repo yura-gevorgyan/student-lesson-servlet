@@ -19,6 +19,6 @@ public class DeleteLessonServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
 
         lessonManager.delete(id);
-        resp.sendRedirect("lessons");
+        resp.sendRedirect("/lessons");
     }
 }

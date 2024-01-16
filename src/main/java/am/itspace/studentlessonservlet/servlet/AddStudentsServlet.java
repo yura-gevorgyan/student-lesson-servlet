@@ -63,6 +63,6 @@ public class AddStudentsServlet extends HttpServlet {
                 .pictureName(pictureName)
                 .build());
 
-        resp.sendRedirect("student");
+        resp.sendRedirect("/student");
     }
 }

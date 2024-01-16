@@ -18,6 +18,7 @@
 <body>
 <table>
     <tr>
+        <th>PICTURE</th>
         <th>NAME</th>
         <th>SURNAME</th>
         <th>EMAIL</th>
@@ -26,6 +27,12 @@
     </tr>
     <%for (Student student : students) { %>
     <tr>
+        <td><% if (student.getPictureName() != null) {%>
+            <img src="/downloadImage?image=<%=student.getPictureName()%>" width="50">
+            <%} else {%>
+            NO PICTURE
+            <%}%>
+        </td>
         <td><%=student.getName()%>
         </td>
         <td><%=student.getSurname()%>

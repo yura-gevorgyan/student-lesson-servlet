@@ -19,6 +19,6 @@ public class DeleteStudentServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
 
         studentManager.delete(id);
-        resp.sendRedirect("student");
+        resp.sendRedirect("/student");
     }
 }
