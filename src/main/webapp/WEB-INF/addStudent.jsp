@@ -13,7 +13,7 @@
 </head>
 <body>
 <%List<Lesson> lessons = (List<Lesson>) request.getAttribute("lessons");%>
-<form method="post" action="addStudents">
+<form method="post" action="/addStudents" enctype="multipart/form-data">
     NAME: <input type="text" name="name">
     <br>
     <br>
@@ -26,13 +26,15 @@
     AGE: <input type="number" name="age" min="16" max="60">
     <br>
     <br>
-
     <select name="lessonId">
         <%for (Lesson lesson : lessons) {%>
         <option value="<%=lesson.getId()%>"><%=lesson.getName()%>
         </option>
         <% }%>
     </select>
+    <br>
+    <br>
+    <input type="file" name="picture">
     <br>
     <br>
     <input type="submit" value="ADD">

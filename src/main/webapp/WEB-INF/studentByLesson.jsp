@@ -39,7 +39,7 @@
     </tr>
     <%}%>
 </table>
-<a href="lessons"><h3>BACK</h3></a>
+<a href="/lessons"><h3>BACK</h3></a>
 
 </body>
 </html>

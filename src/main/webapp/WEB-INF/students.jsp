@@ -20,19 +20,31 @@
 </head>
 <body>
 <% List<Student> students = (List<Student>) request.getAttribute("students"); %>
+<%if (session.getAttribute("msg") != null) {%>
+<span style="color: red"><%=session.getAttribute("msg")%></span>
+<%}%>
 <h2>All Students</h2>
 <div>
     <table>
         <tr>
+            <th>PICTURE</th>
             <th>NAME</th>
             <th>SURNAME</th>
             <th>EMAIL</th>
             <th>AGE</th>
             <th>LESSON</th>
             <th>DELETE</th>
+            <th>UPDATE</th>
         </tr>
         <%for (Student student : students) { %>
         <tr>
+            <td><%if (student.getPictureName() != null) { %>
+                <img src="/downloadImage?image=<%=student.getPictureName()%>" width="40">
+                <%} else {%>
+                NO PICTURE
+                <% } %>
+            </td>
+
             <td><%=student.getName()%>
             </td>
             <td><%=student.getSurname()%>
@@ -43,12 +55,13 @@
             </td>
             <td><%=student.getLesson().getName()%>
             </td>
-            <td><a href="deleteStudent?id=<%=student.getId()%>">DELETE</a></td>
+            <td><a href="/deleteStudent?id=<%=student.getId()%>">DELETE</a></td>
+            <td><a href="/updateStudent?id=<%=student.getId()%>">UPDATE</a></td>
         </tr>
         <%}%>
     </table>
 </div>
-<a href="addStudents"><h2>Add Students</h2></a>
-<a href="home"><h3>BACK</h3></a>
+<a href="/addStudents"><h2>Add Students</h2></a>
+<a href="/home"><h3>BACK</h3></a>
 </body>
 </html>

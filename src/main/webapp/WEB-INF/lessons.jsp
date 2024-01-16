@@ -28,7 +28,7 @@
         </tr>
         <% for (Lesson lesson : lessons) {%>
         <tr>
-            <td><a href="studentByLesson?id=<%=lesson.getId()%>"><%=lesson.getName()%>
+            <td><a href="/studentByLesson?id=<%=lesson.getId()%>"><%=lesson.getName()%>
             </a>
             </td>
             <td><%=lesson.getDuration()%>
@@ -37,12 +37,12 @@
             </td>
             <td><%=lesson.getPrice()%>
             </td>
-            <td><a href="deleteLesson?id=<%=lesson.getId()%>">DELETE</a></td>
+            <td><a href="/deleteLesson?id=<%=lesson.getId()%>">DELETE</a></td>
         </tr>
         <%}%>
     </table>
 </div>
-<a href="addLesson"><h2>ADD LESSON</h2></a>
-<a href="home"><h3>BACK</h3></a>
+<a href="/addLesson"><h2>ADD LESSON</h2></a>
+<a href="/home"><h3>BACK</h3></a>
 </body>
 </html>

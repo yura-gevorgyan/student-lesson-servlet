@@ -5,10 +5,16 @@
     <title>Hello World</title>
 </head>
 <body>
-<a href="lessons">LESSONS</a>
+<%if (session.getAttribute("msg") != null) {%>
+<span style="color: red"><%=session.getAttribute("msg")%></span>
 <br>
-<br>
-<br>
-<a href="student">STUDENTS</a>
+<%}%>
+LOGIN
+<form method="post" action="/login">
+    E-MAIL: <input type="email" name="email"><br>
+    PASSWORD: <input type="password" name="password"><br>
+    <input type="submit" value="LOGIN">
+</form>
+<a href="/register">REGISTER</a>
 </body>
 </html>
