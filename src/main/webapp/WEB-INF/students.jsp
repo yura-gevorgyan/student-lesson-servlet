@@ -55,8 +55,8 @@
             </td>
             <td><%=student.getLesson().getName()%>
             </td>
-            <td><a href="/deleteStudent?id=<%=student.getId()%>">DELETE</a></td>
-            <td><a href="/updateStudent?id=<%=student.getId()%>">UPDATE</a></td>
+            <td><a href="/student/delete?id=<%=student.getId()%>">DELETE</a></td>
+            <td><a href="/student/update?id=<%=student.getId()%>">UPDATE</a></td>
         </tr>
         <%}%>
     </table>

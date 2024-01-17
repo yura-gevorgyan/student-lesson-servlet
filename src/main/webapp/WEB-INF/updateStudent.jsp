@@ -15,7 +15,7 @@
     <title>UPDATE</title>
 </head>
 <body>
-<form method="post" action="/updateStudent">
+<form method="post" action="/student/update">
     <input type="hidden" name="studentId" value="<%=student.getId()%>">
     NEW NAME: <input type="text" name="name" value="<%=student.getName()%>"><br>
     NEW SURNAME: <input type="text" name="surname" value="<%=student.getSurname()%>"><br>

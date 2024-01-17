@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/addStudents")
+@WebServlet(urlPatterns = "/student/add")
 @MultipartConfig(
         maxFileSize = 1024 * 1024 * 5, //5mb
         maxRequestSize = 1024 * 1024 * 10,

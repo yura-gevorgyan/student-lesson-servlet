@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/addLesson")
+@WebServlet(urlPatterns = "/lessons/add")
 public class AddLessonServlet extends HttpServlet {
 
     private LessonManager lessonManager = new LessonManager();

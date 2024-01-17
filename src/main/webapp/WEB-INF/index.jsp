@@ -11,8 +11,8 @@
 <%}%>
 LOGIN
 <form method="post" action="/login">
-    E-MAIL: <input type="email" name="email"><br>
-    PASSWORD: <input type="password" name="password"><br>
+    E-MAIL: <input type="email" name="email" placeholder="ENTER E-MAIL"><br>
+    PASSWORD: <input type="password" name="password" placeholder="ENTER PASSWORD"><br>
     <input type="submit" value="LOGIN">
 </form>
 <a href="/register">REGISTER</a>

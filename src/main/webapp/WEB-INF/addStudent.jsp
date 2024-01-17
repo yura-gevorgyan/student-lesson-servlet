@@ -13,7 +13,7 @@
 </head>
 <body>
 <%List<Lesson> lessons = (List<Lesson>) request.getAttribute("lessons");%>
-<form method="post" action="/addStudents" enctype="multipart/form-data">
+<form method="post" action="/student/add" enctype="multipart/form-data">
     NAME: <input type="text" name="name">
     <br>
     <br>

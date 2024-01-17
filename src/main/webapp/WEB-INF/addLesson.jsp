@@ -11,7 +11,7 @@
     <title>ADD LESSON</title>
 </head>
 <body>
-<form method="post" action="/addLesson">
+<form method="post" action="/lessons/add">
     <br>
     <br>
     NAME: <input type="text" name="lessonName">

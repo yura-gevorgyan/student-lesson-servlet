@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
             resp.sendRedirect("/home");
         } else {
             req.getSession().setAttribute("msg", "With this E-MAIL have already registered");
-            resp.sendRedirect("/");
+            req.getRequestDispatcher("/WEB-INF/register.jsp").forward(req, resp);
         }
 
     }

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/deleteStudent")
+@WebServlet(urlPatterns = "/student/delete")
 public class DeleteStudentServlet extends HttpServlet {
 
     private StudentManager studentManager = new StudentManager();

@@ -37,12 +37,12 @@
             </td>
             <td><%=lesson.getPrice()%>
             </td>
-            <td><a href="/deleteLesson?id=<%=lesson.getId()%>">DELETE</a></td>
+            <td><a href="/lessons/delete?id=<%=lesson.getId()%>">DELETE</a></td>
         </tr>
         <%}%>
     </table>
 </div>
-<a href="/addLesson"><h2>ADD LESSON</h2></a>
+<a href="/lessons/add"><h2>ADD LESSON</h2></a>
 <a href="/home"><h3>BACK</h3></a>
 </body>
 </html>

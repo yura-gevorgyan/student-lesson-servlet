@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/updateStudent")
+@WebServlet(urlPatterns = "/student/update")
 public class UpdateStudentServlet extends HttpServlet {
 
     private StudentManager studentManager = new StudentManager();

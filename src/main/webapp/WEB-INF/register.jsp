@@ -11,6 +11,10 @@
     <title>REGISTER</title>
 </head>
 <body>
+<%if (session.getAttribute("msg") != null) {%>
+<span style="color: red"><%=session.getAttribute("msg")%></span>
+<br>
+<%}%>
 <form method="post" action="/register">
     NAME: <input type="text" name="name"><br>
     SURNAME: <input type="text" name="surname"><br>
