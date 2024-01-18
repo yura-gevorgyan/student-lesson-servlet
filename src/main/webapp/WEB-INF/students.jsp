@@ -33,10 +33,14 @@
             <th>EMAIL</th>
             <th>AGE</th>
             <th>LESSON</th>
+            <th>USER</th>
             <th>DELETE</th>
             <th>UPDATE</th>
         </tr>
-        <%for (Student student : students) { %>
+        <%
+            for (Student student : students) {
+                if (student.getUser() != null && student.getUser().equals(session.getAttribute("user"))) {
+        %>
         <tr>
             <td><%if (student.getPictureName() != null) { %>
                 <img src="/downloadImage?image=<%=student.getPictureName()%>" width="40">
@@ -55,9 +59,12 @@
             </td>
             <td><%=student.getLesson().getName()%>
             </td>
+            <td><%=student.getUser().getName() + " " + student.getUser().getSurname()%>
+            </td>
             <td><a href="/student/delete?id=<%=student.getId()%>">DELETE</a></td>
             <td><a href="/student/update?id=<%=student.getId()%>">UPDATE</a></td>
         </tr>
+        <%}%>
         <%}%>
     </table>
 </div>

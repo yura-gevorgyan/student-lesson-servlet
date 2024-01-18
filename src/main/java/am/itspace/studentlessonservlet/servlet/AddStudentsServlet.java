@@ -4,6 +4,7 @@ import am.itspace.studentlessonservlet.manager.LessonManager;
 import am.itspace.studentlessonservlet.manager.StudentManager;
 import am.itspace.studentlessonservlet.model.Lesson;
 import am.itspace.studentlessonservlet.model.Student;
+import am.itspace.studentlessonservlet.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -39,10 +40,10 @@ public class AddStudentsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String email = req.getParameter("email");
+        if (studentManager.getByEmail(email) == null) {
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
-        String email = req.getParameter("email");
-
         int age = Integer.parseInt(req.getParameter("age"));
         int lessonId = Integer.parseInt(req.getParameter("lessonId"));
         Lesson lesson = lessonManager.getLessonByID(lessonId);
@@ -61,8 +62,13 @@ public class AddStudentsServlet extends HttpServlet {
                 .age(age)
                 .lesson(lesson)
                 .pictureName(pictureName)
+                .user((User) req.getSession().getAttribute("user"))
                 .build());
 
         resp.sendRedirect("/student");
+        } else {
+            req.setAttribute("msg", "Student with " + email + " have already added");
+            req.getRequestDispatcher("/WEB-INF/addStudent.jsp").forward(req, resp);
+        }
     }
 }

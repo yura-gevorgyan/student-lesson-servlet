@@ -24,9 +24,12 @@
             <th>DURATION</th>
             <th>LECTURER NAME</th>
             <th>PRICE</th>
+            <th>USER</th>
             <th>DELETE</th>
         </tr>
-        <% for (Lesson lesson : lessons) {%>
+        <% for (Lesson lesson : lessons) {
+            if (lesson.getUser() != null && lesson.getUser().equals(session.getAttribute("user"))) {
+        %>
         <tr>
             <td><a href="/studentByLesson?id=<%=lesson.getId()%>"><%=lesson.getName()%>
             </a>
@@ -37,8 +40,11 @@
             </td>
             <td><%=lesson.getPrice()%>
             </td>
+            <td><%=lesson.getUser().getName() + " " + lesson.getUser().getSurname()%>
+            </td>
             <td><a href="/lessons/delete?id=<%=lesson.getId()%>">DELETE</a></td>
         </tr>
+        <%}%>
         <%}%>
     </table>
 </div>

@@ -13,9 +13,10 @@ public class StudentManager {
     Connection connection = DBConnectionProvider.getProvider().getConnection();
 
     LessonManager lessonManager = new LessonManager();
+    UserManager userManager = new UserManager();
 
     public void add(Student student) {
-        String sql = "INSERT INTO student(name,surname,email,age,lesson_id,picture_name) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO student(name,surname,email,age,lesson_id,picture_name,user_id) VALUES (?,?,?,?,?,?,?)";
         try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, student.getName());
             ps.setString(2, student.getSurname());
@@ -23,6 +24,7 @@ public class StudentManager {
             ps.setInt(4, student.getAge());
             ps.setInt(5, student.getLesson().getId());
             ps.setString(6, student.getPictureName());
+            ps.setInt(7, student.getUser().getId());
 
             ps.executeUpdate();
             ResultSet generatedKeys = ps.getGeneratedKeys();
@@ -50,6 +52,7 @@ public class StudentManager {
                 int age = resultSet.getInt("age");
                 int lessonId = resultSet.getInt("lesson_id");
                 String pictureName = resultSet.getString("picture_name");
+                int userId = resultSet.getInt("user_id");
 
                 Lesson lessonByID = lessonManager.getLessonByID(lessonId);
                 students.add(Student.builder()
@@ -60,6 +63,7 @@ public class StudentManager {
                         .age(age)
                         .lesson(lessonByID)
                         .pictureName(pictureName)
+                        .user(userManager.getById(userId))
                         .build());
             }
         } catch (SQLException e) {
@@ -80,6 +84,7 @@ public class StudentManager {
                 int age = resultSet.getInt("age");
                 int lessonId = resultSet.getInt("lesson_id");
                 String pictureName = resultSet.getString("picture_name");
+                int userId = resultSet.getInt("user_id");
 
                 Lesson lessonByID = lessonManager.getLessonByID(lessonId);
                 return Student.builder()
@@ -90,6 +95,41 @@ public class StudentManager {
                         .age(age)
                         .lesson(lessonByID)
                         .pictureName(pictureName)
+                        .user(userManager.getById(userId))
+                        .build();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Student getByEmail(String email) {
+        String sql = "SELECT * FROM student WHERE email = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String surname = resultSet.getString("surname");
+                int age = resultSet.getInt("age");
+                int lessonId = resultSet.getInt("lesson_id");
+                String pictureName = resultSet.getString("picture_name");
+                int userId = resultSet.getInt("user_id");
+
+                Lesson lessonByID = lessonManager.getLessonByID(lessonId);
+
+                return Student.builder()
+                        .id(id)
+                        .name(name)
+                        .surname(surname)
+                        .email(email)
+                        .age(age)
+                        .lesson(lessonByID)
+                        .pictureName(pictureName)
+                        .user(userManager.getById(userId))
                         .build();
             }
         } catch (SQLException e) {
@@ -120,6 +160,7 @@ public class StudentManager {
                     String email = resultSet.getString("email");
                     int age = resultSet.getInt("age");
                     String pictureName = resultSet.getString("picture_name");
+                    int userId = resultSet.getInt("user_id");
 
                     Lesson lessonByID = lessonManager.getLessonByID(lessonId);
                     students.add(Student.builder()
@@ -130,6 +171,7 @@ public class StudentManager {
                             .age(age)
                             .lesson(lessonByID)
                             .pictureName(pictureName)
+                            .user(userManager.getById(userId))
                             .build());
                 }
         } catch (SQLException e) {

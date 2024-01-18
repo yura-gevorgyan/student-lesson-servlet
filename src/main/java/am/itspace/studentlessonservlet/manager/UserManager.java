@@ -36,6 +36,33 @@ public class UserManager {
         return null;
     }
 
+    public User getById(int id) {
+        String sql = "SELECT * FROM user WHERE id = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, id);
+
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String surname = resultSet.getString("surname");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+
+                return User.builder()
+                        .id(id)
+                        .name(name)
+                        .surname(surname)
+                        .email(email)
+                        .password(password)
+                        .build();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void add(User user) {
         String sql = "INSERT INTO user(name,surname,email,password) VALUES (?,?,?,?)";
 

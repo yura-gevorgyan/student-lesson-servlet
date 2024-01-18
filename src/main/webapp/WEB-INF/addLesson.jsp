@@ -11,9 +11,10 @@
     <title>ADD LESSON</title>
 </head>
 <body>
+<% if (request.getAttribute("msg") != null) {%>
+<span style="color:red;"><%=request.getAttribute("msg")%></span>
+<%}%>
 <form method="post" action="/lessons/add">
-    <br>
-    <br>
     NAME: <input type="text" name="lessonName">
     <br>
     <br>

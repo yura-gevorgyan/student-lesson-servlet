@@ -14,7 +14,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if (req.getSession().getAttribute("user") != null) {
-            req.getSession().invalidate();
+            req.getSession().removeAttribute("msg");
         } else {
             req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
         }

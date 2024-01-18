@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,5 +18,6 @@ public class Student {
     private int age;
     private String pictureName;
     private Lesson lesson;
+    private User user;
 
 }

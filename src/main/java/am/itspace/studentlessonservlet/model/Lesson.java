@@ -5,9 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,4 +16,5 @@ public class Lesson {
     private int duration;
     private String lecturerName;
     private double price;
+    private User user;
 }

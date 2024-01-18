@@ -12,6 +12,9 @@
     <title>Student</title>
 </head>
 <body>
+<% if (request.getAttribute("msg") != null) {%>
+<span style="color:red;"><%=request.getAttribute("msg")%></span>
+<%}%>
 <%List<Lesson> lessons = (List<Lesson>) request.getAttribute("lessons");%>
 <form method="post" action="/student/add" enctype="multipart/form-data">
     NAME: <input type="text" name="name">
